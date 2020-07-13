@@ -6,7 +6,7 @@ const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>Clousre part 1</h1>`;
 
 function isPrimeCache(v) {
-  return new function () {
+  return function () {
     if (v <= 3) {
       return v > 1;
     }
@@ -30,7 +30,6 @@ function factorize(v) {
     isPrime = isPrimeCache(v);
     dict[v] = isPrime;
   }
-  console.log('isPrime ' + v + ':' + isPrime(v));
   if (!isPrime(v)) {
     let i = Math.floor(Math.sqrt(v));
     while (v % i != 0) {
@@ -43,3 +42,5 @@ function factorize(v) {
   }
   return [v];
 }
+
+console.log(factorize(120));
